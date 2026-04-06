@@ -12,12 +12,12 @@
             var result = "";
             for(var i=0;i<countriesList.length;i++){
                 if(countriesList[i].toLowerCase().startsWith(searchTxt.toLowerCase())){
-                     result += "<li>" + countriesList[i] + "</li>";
+                     result += "<option>" + countriesList[i] + "</option>";
                       console.log(countriesList[i]);
                 }
                    
                 }
-                 document.getElementById("output").innerHTML = result;
+                 document.getElementById("dropdown").innerHTML = result;
             }
         
         </script>
@@ -26,7 +26,11 @@
             <br>
             <button onclick="filter()">Filter</button>
             <br>
-             <ul id="output"></ul>
+           <select id="dropdown">
+            
+        <option value="">Select Country</option>
+    </select>
+
            <!-- <select>
                 <option> </option>
                 <option>India</option>
