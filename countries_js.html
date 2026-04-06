@@ -9,18 +9,24 @@
             applyFilter(x);
         }
         function applyFilter(searchTxt){
+            var result = "";
             for(var i=0;i<countriesList.length;i++){
-                if(countriesList[i].startsWith(searchTxt)){
-                    console.log(countriesList[i]);
+                if(countriesList[i].toLowerCase().startsWith(searchTxt.toLowerCase())){
+                     result += "<li>" + countriesList[i] + "</li>";
+                      console.log(countriesList[i]);
                 }
+                   
+                }
+                 document.getElementById("output").innerHTML = result;
             }
-        }
+        
         </script>
         <body>
             <input type="text" id="searchTxt" value=""/> 
             <br>
             <button onclick="filter()">Filter</button>
             <br>
+             <ul id="output"></ul>
            <!-- <select>
                 <option> </option>
                 <option>India</option>
