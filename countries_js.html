@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script>
+        var countriesList=["India","USA","Iran","UK","Pakistan","Srilanka","Australia","UAE","China","Bhutan","Africa","Denmark","Egypt","France"];
+        function filter(){
+            var x = document.getElementById("searchTxt").value;
+            
+            // console.log(x);
+            applyFilter(x);
+        }
+        function applyFilter(searchTxt){
+            for(var i=0;i<countriesList.length;i++){
+                if(countriesList[i].startsWith(searchTxt)){
+                    console.log(countriesList[i]);
+                }
+            }
+        }
+        </script>
+        <body>
+            <input type="text" id="searchTxt" value=""/> 
+            <br>
+            <button onclick="filter()">Filter</button>
+            <br>
+           <!-- <select>
+                <option> </option>
+                <option>India</option>
+                <option>USA</option>
+                <option>Iran</option>
+                <option>UK</option>
+                <option>Pakistan</option>
+                <option>Srilanka</option>
+            </select>
+             -->
+        </body>
+    </head>
+</html>
