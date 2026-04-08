@@ -1,46 +1,52 @@
 <html>
-    <head>
-        <script>
-        var countriesList=["India","USA","Iran","UK","Pakistan","Srilanka","Australia","UAE","China","Bhutan","Africa","Denmark","Egypt","France"];
-        function filter(){
-            var x = document.getElementById("searchTxt").value;
-            
-            // console.log(x);
-            applyFilter(x);
-        }
-        function applyFilter(searchTxt){
-            var result = "";
-            for(var i=0;i<countriesList.length;i++){
-                if(countriesList[i].toLowerCase().startsWith(searchTxt.toLowerCase())){
-                     result += "<option>" + countriesList[i] + "</option>";
-                      console.log(countriesList[i]);
-                }
-                   
-                }
-                 document.getElementById("dropdown").innerHTML = result;
-            }
-        
-        </script>
-        <body>
-            <input type="text" id="searchTxt" value=""/> 
-            <br>
-            <button onclick="filter()">Filter</button>
-            <br>
-           <select id="dropdown">
-            
-        <option value="">Select Country</option>
-    </select>
+<head>
+<script>
+var countriesList = ["USA","Iran","UK","Pakistan","Srilanka","UAE","China","Bhutan","Africa","Argentina","Belgium","Canada","Denmark","Egypt","France","Germany","Hungary","India","Japan","Kenya","Laos","Mexico","Netherlands","Oman","Peru","Qatar","Romania","Spain","Turkey","Uganda","Vietnam","Yemen","Zambia","Australia","Brazil","Chile","Dominican Republic","Ethiopia","Finland","Greece","Haiti","Indonesia","Jordan","Kuwait","Lebanon","Morocco","Norway","Pakistan","Russia","Sweden","Thailand","Ukraine","Venezuela","Zimbabwe","Algeria","Bangladesh","Croatia","Ecuador","Philippines"];
 
-           <!-- <select>
-                <option> </option>
-                <option>India</option>
-                <option>USA</option>
-                <option>Iran</option>
-                <option>UK</option>
-                <option>Pakistan</option>
-                <option>Srilanka</option>
-            </select>
-             -->
-        </body>
-    </head>
+
+countriesList.sort();
+
+
+function displayCountries(list){
+    var result ;
+    for(var i = 0; i < list.length; i++){
+        result += "<option>" + list[i] + "</option>";
+    }
+    document.getElementById("dropdown").innerHTML = result;
+   
+}
+ console.log(countriesList);
+
+function filter(){
+    var x = document.getElementById("searchTxt").value.toLowerCase();
+    
+    var filteredList = [];
+
+    for(var i = 0; i < countriesList.length; i++){
+        if(countriesList[i].toLowerCase().startsWith(x)){
+            filteredList.push( countriesList[i]);
+           
+        }
+         
+    }
+    console.log(filteredList);
+    displayCountries(filteredList);
+}
+
+
+window.onload = function(){
+    displayCountries(countriesList);
+}
+</script>
+</head>
+
+<body>
+<input type="text" id="searchTxt" placeholder="Search country" onkeyup="filter()"/> 
+<br><br>
+<!-- <button onclick="filter()">Filter</button> -->
+<!-- <br><br> -->
+
+<select id="dropdown"></select>
+
+</body>
 </html>
