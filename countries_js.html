@@ -1,5 +1,19 @@
 <html>
 <head>
+<style>
+.input-container {
+    background: #ffffff;
+    padding: 25px 30px;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.styled-input {
+    width: 250px;
+    padding: 10px 12px;
+    border: 2px solid #ccc;
+    border-radius: 6px;
+}
+</style>
 <script>
 var countriesList = ["USA","Iran","UK","Pakistan","Srilanka","UAE","China","Bhutan","Africa","Argentina","Belgium","Canada","Denmark","Egypt","France","Germany","Hungary","India","Japan","Kenya","Laos","Mexico","Netherlands","Oman","Peru","Qatar","Romania","Spain","Turkey","Uganda","Vietnam","Yemen","Zambia","Australia","Brazil","Chile","Dominican Republic","Ethiopia","Finland","Greece","Haiti","Indonesia","Jordan","Kuwait","Lebanon","Morocco","Norway","Pakistan","Russia","Sweden","Thailand","Ukraine","Venezuela","Zimbabwe","Algeria","Bangladesh","Croatia","Ecuador","Philippines"];
 
@@ -8,20 +22,21 @@ countriesList.sort();
 
 
 function displayCountries(list){
-    var result ;
+    var result ="";
     for(var i = 0; i < list.length; i++){
         result += "<option>" + list[i] + "</option>";
     }
     document.getElementById("dropdown").innerHTML = result;
-   
 }
  console.log(countriesList);
+ 
 
-function filter(){
+function filter(searchTxt){
     var x = document.getElementById("searchTxt").value.toLowerCase();
     
     var filteredList = [];
-
+   document.getElementById("dropdown").size = filteredList.length;
+   
     for(var i = 0; i < countriesList.length; i++){
         if(countriesList[i].toLowerCase().startsWith(x)){
             filteredList.push( countriesList[i]);
@@ -31,22 +46,32 @@ function filter(){
     }
     console.log(filteredList);
     displayCountries(filteredList);
+    document.getElementById("dropdown").size = filteredList.length;
+
+    // optional: collapse if empty
+    // if(filteredList.length === 0){
+    //     document.getElementById("dropdown").size = 1;
+    // }
+  
 }
+
 
 
 window.onload = function(){
     displayCountries(countriesList);
+   
 }
+ 
 </script>
 </head>
 
 <body>
-<input type="text" id="searchTxt" placeholder="Search country" onkeyup="filter()"/> 
+<input type="text" id="searchTxt" class="styled-input" placeholder="Search country" onkeyup="filter()"/> 
 <br><br>
 <!-- <button onclick="filter()">Filter</button> -->
 <!-- <br><br> -->
 
-<select id="dropdown"></select>
+<select id="dropdown"  ></select>
 
 </body>
 </html>
